@@ -1,0 +1,53 @@
+{% extends "template.html" %}
+{% block conteudo %}
+  <h1>To Do List</h1>
+  <h2>In development...</h2>
+  <div class="check-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Status</th>
+          <th>Prioridade</th>
+          <th>Data de Início</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in lista_task %}
+          <tr>
+            <td>{{ task.desc_curta }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.prioridade }}</td>
+            <td>{{ task.data_inicio }}</td>
+            <td>
+              <form class="" action="{{ url_for('concluir') }}" method="post">
+                <button type="submit" name="button">Concluir</button>
+                <a href="#">Deletar</a>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr>
+          <td>Iniciar Projeto</td>
+          <td>Em andamento</td>
+          <td>Baixa</td>
+          <td>13/06/2020</td>
+        </tr>
+        <tr>
+          <td>Criar formulário</td>
+          <td>Em andamento</td>
+          <td>Médio</td>
+          <td>13/06/2020</td>
+        </tr>
+        <tr>
+          <td>Criar lógica de cadastro</td>
+          <td>Em andamento</td>
+          <td>Média</td>
+          <td>13/06/2020</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="{{ url_for('novo') }}">Nova Atividade</a>
+  </div>
+{% endblock %}
